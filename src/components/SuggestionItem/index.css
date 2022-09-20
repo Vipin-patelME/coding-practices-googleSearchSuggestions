@@ -1,0 +1,13 @@
+/* Write your CSS here */
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: -8px;
+}
+
+.arrow-icon {
+  height: 10px;
+  width: 10px;
+}
