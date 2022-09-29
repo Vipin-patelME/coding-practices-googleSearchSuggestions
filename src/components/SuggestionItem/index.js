@@ -3,10 +3,10 @@ import './index.css'
 
 const SuggestionItem = props => {
   const {eachSuggestions, selectedSuggestion} = props
-  const {suggestion, id} = eachSuggestions
+  const {suggestion} = eachSuggestions
 
   const onSelected = () => {
-    selectedSuggestion(id)
+    selectedSuggestion(suggestion)
   }
 
   return (
