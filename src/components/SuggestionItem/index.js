@@ -2,23 +2,23 @@
 import './index.css'
 
 const SuggestionItem = props => {
-  const {eachsuggestion, filterSelectedSuggestion} = props
-  const {suggestion, id} = eachsuggestion
+  const {eachSuggestions, selectedSuggestion} = props
+  const {suggestion, id} = eachSuggestions
 
-  const onSelect = () => {
-    filterSelectedSuggestion(id)
+  const onSelected = () => {
+    selectedSuggestion(id)
   }
+
   return (
-    <l1 className="list-item">
+    <li className="filtered-item-list">
       <p>{suggestion}</p>
       <img
-        src="https://assets.ccbp.in/frontend/react-js/diagonal-arrow-left-up.png"
+        src="https://assets.ccbp.in/frontend/react-js/diagonal-arrow-left-up.png "
         alt="arrow"
-        className="arrow-icon"
-        onClick={onSelect}
+        className="search-logo"
+        onClick={onSelected}
       />
-    </l1>
+    </li>
   )
 }
-
 export default SuggestionItem
