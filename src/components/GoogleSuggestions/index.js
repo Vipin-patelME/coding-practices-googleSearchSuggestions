@@ -6,27 +6,24 @@ import SuggestionItem from '../SuggestionItem'
 class GoogleSuggestions extends Component {
   state = {userInput: ''}
 
-  userInput = event => {
+  onUserInput = event => {
     this.setState({userInput: event.target.value})
   }
 
-  selectedSuggestion = id => {
-    const suggestions = this.props
-    const selectedSuggestion = suggestions.filter(
-      everySuggestion => everySuggestion.id === id,
-    )
-    console.log(selectedSuggestion)
+  selectedSuggestion = value => {
+    this.setState({userInput: value})
   }
 
   filteredSuggestions = suggestionsList => {
     const {userInput} = this.state
     const filteredItems = suggestionsList.filter(eachSuggestion =>
-      eachSuggestion.suggestion.includes(userInput),
+      eachSuggestion.suggestion.toLowerCase().includes(userInput.toLowerCase()),
     )
     return filteredItems
   }
 
   render() {
+    const {userInput} = this.state
     const {suggestionsList} = this.props
     const filterSuggestion = this.filteredSuggestions(suggestionsList)
     return (
@@ -40,14 +37,15 @@ class GoogleSuggestions extends Component {
           <div>
             <img
               src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"
-              alt="search logo"
+              alt="search icon"
               className="search-logo"
             />
             <input
               type="search"
               className="search-input"
-              onChange={this.userInput}
-              placeholder="gooogle search"
+              onChange={this.onUserInput}
+              placeholder="google search"
+              value={userInput}
             />
           </div>
           <ul className="suggestion-list-cont">
